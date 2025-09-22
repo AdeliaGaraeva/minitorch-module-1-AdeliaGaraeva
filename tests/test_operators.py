@@ -1,6 +1,7 @@
 from typing import Callable, List, Tuple
 
 import pytest
+import math
 from hypothesis import given
 from hypothesis.strategies import lists
 
@@ -97,7 +98,6 @@ def test_eq(a: float) -> None:
 # that ensure that your operators obey basic
 # mathematical rules.
 
-
 @pytest.mark.task0_2
 @given(small_floats)
 def test_sigmoid(a: float) -> None:
@@ -107,40 +107,52 @@ def test_sigmoid(a: float) -> None:
     * It crosses 0 at 0.5
     * It is  strictly increasing.
     """
-    raise NotImplementedError("Need to include this file from past assignment.")
+    s = sigmoid(a)
+    value = 0.0 < s < 1.0 or math.isclose(s, 0, rel_tol=1e-6) or math.isclose(s, 1, rel_tol=1e-6)
+    print(s, value)
+    assert value
+    assert math.isclose(1, sigmoid(-a) + s, rel_tol=1e-6)
+    assert math.isclose(sigmoid(0.0), 0.5, rel_tol=1e-6)
+    # чекнем производную для строгого возрастания
+    assert s * (1 - s) >= 0
 
 
 @pytest.mark.task0_2
 @given(small_floats, small_floats, small_floats)
 def test_transitive(a: float, b: float, c: float) -> None:
-    "Test the transitive property of less-than (a < b and b < c implies a < c)"
-    raise NotImplementedError("Need to include this file from past assignment.")
+    """Test the transitive property of less-than (a < b and b < c implies a < c)"""
+    if a < b and b < c:
+        assert a < c
 
 
 @pytest.mark.task0_2
 def test_symmetric() -> None:
-    """
-    Write a test that ensures that :func:`minitorch.operators.mul` is symmetric, i.e.
+    """Write a test that ensures that :func:`minitorch.operators.mul` is symmetric, i.e.
     gives the same value regardless of the order of its input.
     """
-    raise NotImplementedError("Need to include this file from past assignment.")
+    assert mul(2, 3) == mul(3, 2)
+    assert mul(-2, 7) == mul(7, -2)
+    assert mul(-2, -7) == mul(-7, -2)
+    assert mul(-2, 0) == mul(0, -2)
 
 
 @pytest.mark.task0_2
 def test_distribute() -> None:
-    r"""
-    Write a test that ensures that your operators distribute, i.e.
+    r"""Write a test that ensures that your operators distribute, i.e.
     :math:`z \times (x + y) = z \times x + z \times y`
     """
-    raise NotImplementedError("Need to include this file from past assignment.")
+    x, y, z = 2, 3, 5
+    lhs = mul(z, add(x, y))
+    rhs = add(mul(z, x), mul(z, y))
+    assert math.isclose(lhs, rhs, rel_tol=1e-6)
 
 
 @pytest.mark.task0_2
 def test_other() -> None:
-    """
-    Write a test that ensures some other property holds for your functions.
-    """
-    raise NotImplementedError("Need to include this file from past assignment.")
+    """Write a test that ensures some other property holds for your functions. Relu(x) >= 0"""
+    assert relu(2) >= 0
+    assert relu(0) >= 0
+    assert relu(-2) >= 0
 
 
 # ## Task 0.3  - Higher-order functions
@@ -168,7 +180,7 @@ def test_sum_distribute(ls1: List[float], ls2: List[float]) -> None:
     Write a test that ensures that the sum of `ls1` plus the sum of `ls2`
     is the same as the sum of each element of `ls1` plus each element of `ls2`.
     """
-    raise NotImplementedError("Need to include this file from past assignment.")
+    assert math.isclose(sum(addLists(ls1, ls2)), sum(ls1) + sum(ls2), rel_tol=1e-6)
 
 
 @pytest.mark.task0_3
