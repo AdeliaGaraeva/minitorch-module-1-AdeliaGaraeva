@@ -19,6 +19,7 @@ The files that will be synced are:
 Task 1.5
 
 "Xor"
+<img width="271" height="606" alt="image" src="https://github.com/user-attachments/assets/359d8496-a295-4dcd-9320-b3fa1935cec4" />
 
 PTS = 100
 HIDDEN = 6
@@ -68,6 +69,8 @@ Epoch  400  loss  8.799557313228279 correct 97
 
 
 "Diag"
+<img width="293" height="722" alt="image" src="https://github.com/user-attachments/assets/2412262d-3c1f-4383-ae9b-64c50a3957bf" />
+
 
 PTS = 50
 HIDDEN = 2
@@ -128,6 +131,8 @@ Epoch  500  loss  0.510304100532599 correct 50
 
 "Simple"
 
+<img width="243" height="721" alt="image" src="https://github.com/user-attachments/assets/65c896af-2694-4bff-b557-d61bbdf280a7" />
+
 PTS = 50
 HIDDEN = 2
 RATE = 0.1
@@ -186,6 +191,8 @@ Epoch  500  loss  2.8935561207756995 correct 50
 
 
 "Split"
+<img width="243" height="723" alt="image" src="https://github.com/user-attachments/assets/c3c1fec2-4243-44c3-b8ce-d2602c3f87f2" />
+
 
 PTS = 100
 HIDDEN = 5
@@ -244,6 +251,8 @@ Epoch  500  loss  10.44123422477936 correct 95
 
 
 "Circle"
+<img width="241" height="720" alt="image" src="https://github.com/user-attachments/assets/40f0508b-6286-4a38-9f38-c8ad722fbcb7" />
+
 
 PTS = 100
 HIDDEN = 5
@@ -299,6 +308,7 @@ Epoch  470  loss  29.684910971867854 correct 85
 Epoch  480  loss  19.70967084070918 correct 93
 Epoch  490  loss  17.681345362305773 correct 95
 Epoch  500  loss  18.207874591388993 correct 93
+
 
 
 
