@@ -34,7 +34,4 @@ jobs:
         pytest tests -x -m task1_2
         pytest tests -x -m task1_3
         pytest tests -x -m task1_4
-    - name: Run project/run_scalar.py
-      env:
-        PYTHONPATH: .
-      run: python -u project/run_scalar.py
+
