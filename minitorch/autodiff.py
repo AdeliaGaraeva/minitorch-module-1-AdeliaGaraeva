@@ -66,18 +66,22 @@ def topological_sort(variable: Variable) -> Iterable[Variable]:
     Returns:
         Non-constant Variables in topological order starting from the right.
     """
-    res = [variable]
-    nodes = queue.Queue()
-    nodes.put(variable)
+    res = []
     visited = set()
-    visited.add(variable.unique_id)
-    while nodes.empty() is not True:
-        tmp = nodes.get()
-        for el in tmp.parents:
-            if el.unique_id not in visited and not el.is_constant():
-                res.append(el)
-                nodes.put(el)
-                visited.add(el.unique_id)
+
+    def dfs(node: Variable) -> None:
+        if node.is_constant():
+            return
+        if node.unique_id in visited:
+            return
+        visited.add(node.unique_id)
+        for par in node.parents:
+            dfs(par)
+
+        res.append(node)
+
+    dfs(variable)
+    res = res[::-1]
     return res
 
 
