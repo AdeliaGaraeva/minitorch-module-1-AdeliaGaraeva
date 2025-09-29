@@ -163,10 +163,10 @@ class Scalar:
         assert h.last_fn is not None
         assert h.ctx is not None
 
-        d_ins = h.last_fn._backward(h.ctx, d_output)
+        d_ins = h.last_fn._backward(h.ctx, d_output) #градиенты по входам функции
         res = []
         for in_val, d_in in zip(h.inputs, d_ins):
-            res.append((in_val, d_in))
+            res.append((in_val, d_in)) # (переменная, её градиент)
         return res
 
     def backward(self, d_output: Optional[float] = None) -> None:
